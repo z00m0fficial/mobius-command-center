@@ -1,91 +1,74 @@
-import { Activity, Brain, GitBranch, Mic, ShieldCheck, Sparkles } from "lucide-react";
-import { departments, metrics, recentDecisions, repositoryHealth } from "./data";
-
-const statusClass: Record<string, string> = {
-  online: "good",
-  synchronized: "good",
-  syncing: "warn",
-  "update-required": "warn",
-  planned: "muted"
-};
+import { useState } from "react";
+import { AiCoordinationCenter } from "./components/AiCoordinationCenter";
+import { ApprovalCenter } from "./components/ApprovalCenter";
+import { DecisionTransparency } from "./components/DecisionTransparency";
+import { DepartmentOperations } from "./components/DepartmentOperations";
+import { DigitalTwin } from "./components/DigitalTwin";
+import { ExecutiveAssistant } from "./components/ExecutiveAssistant";
+import { ExecutiveBrief } from "./components/ExecutiveBrief";
+import { FounderWorkspace } from "./components/FounderWorkspace";
+import { Header } from "./components/Header";
+import { LiveTimeline } from "./components/LiveTimeline";
+import { MemorySearch } from "./components/MemorySearch";
+import { OrganizationHealth } from "./components/OrganizationHealth";
+import { PredictiveIntelligence } from "./components/PredictiveIntelligence";
+import { RepositoryHealth } from "./components/RepositoryHealth";
+import { SonicIntelligence } from "./components/SonicIntelligence";
+import { VoiceModeToggle } from "./components/VoiceModeToggle";
+import {
+  aiRoutingDecisions,
+  approvalItems,
+  decisionTransparency,
+  departments,
+  digitalTwin,
+  executiveAssistant,
+  executiveBrief,
+  founderWorkspace,
+  liveTimeline,
+  memoryRecords,
+  organizationHealth,
+  predictiveRecommendations,
+  repositoryHealth,
+  sonicIntelligence,
+  voiceModePanels
+} from "./data";
+import type { VoiceMode } from "./types";
 
 export function App() {
+  const [voiceMode, setVoiceMode] = useState<VoiceMode>("executive");
+
   return (
-    <main className="app-shell">
-      <section className="hero panel">
-        <div>
-          <p className="eyebrow">MOBIUS COMMAND CENTER</p>
-          <h1>One Organization. Infinite Intelligence. Limitless Impact.</h1>
-          <p className="subhead">Executive operating environment for live organizational intelligence.</p>
-        </div>
-        <div className="hero-status">
-          <span>Organization Health</span>
-          <strong>98%</strong>
-          <div className="bar"><div style={{ width: "98%" }} /></div>
-        </div>
+    <main className="command-center-shell">
+      <Header currentInitiative={founderWorkspace.currentInitiative} />
+      <ExecutiveBrief brief={executiveBrief} />
+
+      <section className="layout-grid two-column">
+        <VoiceModeToggle mode={voiceMode} onModeChange={setVoiceMode} panels={voiceModePanels} />
+        <OrganizationHealth health={organizationHealth} />
       </section>
 
-      <section className="metric-grid">
-        {metrics.map((metric) => (
-          <article className="panel metric" key={metric.label}>
-            <span>{metric.label}</span>
-            <strong>{metric.value}</strong>
-            <p>{metric.detail}</p>
-          </article>
-        ))}
+      <section className="layout-grid timeline-grid">
+        <LiveTimeline events={liveTimeline} />
+        <DigitalTwin twin={digitalTwin} />
       </section>
 
-      <section className="grid two">
-        <article className="panel">
-          <div className="section-title"><Brain size={18} /> Department Operations</div>
-          <div className="stack">
-            {departments.map((department) => (
-              <div className="row" key={department.name}>
-                <div>
-                  <strong>{department.name}</strong>
-                  <p>{department.role}</p>
-                </div>
-                <div className="row-status">
-                  <span className={`pill ${statusClass[department.status]}`}>{department.status}</span>
-                  <span>{department.health}%</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </article>
+      <DepartmentOperations departments={departments} />
 
-        <article className="panel">
-          <div className="section-title"><GitBranch size={18} /> Repository Health</div>
-          <div className="stack">
-            {repositoryHealth.map((repo) => (
-              <div className="row" key={repo.repo}>
-                <strong>{repo.repo}</strong>
-                <span className={`pill ${statusClass[repo.status]}`}>{repo.status}</span>
-              </div>
-            ))}
-          </div>
-        </article>
+      <section className="layout-grid two-column">
+        <AiCoordinationCenter decisions={aiRoutingDecisions} />
+        <ApprovalCenter approvals={approvalItems} />
       </section>
 
-      <section className="grid three">
-        <article className="panel signal"><Mic /><strong>Sonic</strong><p>Voice intelligence ready.</p></article>
-        <article className="panel signal"><Activity /><strong>Router</strong><p>Routing decisions active.</p></article>
-        <article className="panel signal"><ShieldCheck /><strong>MCMS</strong><p>Change governance online.</p></article>
+      <section className="layout-grid two-column">
+        <SonicIntelligence sonic={sonicIntelligence} />
+        <MemorySearch records={memoryRecords} />
       </section>
 
-      <section className="panel">
-        <div className="section-title"><Sparkles size={18} /> Recent Decisions</div>
-        <div className="stack">
-          {recentDecisions.map((decision) => (
-            <div className="decision" key={`${decision.time}-${decision.summary}`}>
-              <span>{decision.time}</span>
-              <strong>{decision.source} → {decision.target}</strong>
-              <p>{decision.summary}</p>
-              <em>{decision.confidence}</em>
-            </div>
-          ))}
-        </div>
-      </section>
+      <PredictiveIntelligence recommendations={predictiveRecommendations} />
+      <ExecutiveAssistant assistant={executiveAssistant} />
+      <RepositoryHealth repositories={repositoryHealth} />
+      <DecisionTransparency decisions={decisionTransparency} />
+      <FounderWorkspace workspace={founderWorkspace} />
     </main>
   );
 }
