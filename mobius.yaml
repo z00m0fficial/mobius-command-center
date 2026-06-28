@@ -1,0 +1,28 @@
+mobius:
+  repository: mobius-command-center
+  department: Operations
+  domain: Operations
+  service: Command Center
+  canon_version: pending-mobius-canon
+  architecture_version: 1.0.0
+  sync_status: synchronized
+  consumes:
+    - department-health
+    - repository-sync-status
+    - routing-decisions
+    - voice-confidence-index
+    - organizational-intelligence-efficiency-score
+  produces:
+    - executive-overview
+    - operational-status
+    - attention-items
+    - recommendations
+  depends_on:
+    - mobius-os
+    - mobius-router
+    - mobius-voice
+    - atlas-core
+    - mobius-docs
+  governance:
+    approval_workflow: true
+    executive_view_required: true
