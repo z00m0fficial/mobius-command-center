@@ -1,10 +1,48 @@
-# Codex UI Completion Brief: Mobius Command Center v1.0
+# Codex UI Completion Brief: Mobius Command Center v5
 
 ## Mission
 
 Complete the Mobius Command Center as a working executive operating UI for the Mobius Organizational Intelligence Platform.
 
 The Command Center must feel like mission control for an intelligent organization, not a generic SaaS dashboard.
+
+## Required First-Entry Experience
+
+Before the main dashboard appears, show a Mobius Canon intro screen.
+
+Required elements:
+
+- Animated Mobius logo mark.
+- Title: MOBIUS CANON.
+- Subtitle: Founding Letter.
+- Scrollable letter panel.
+- Checkbox acknowledgement.
+- Enter Mobius button disabled until acknowledgement is checked.
+- Store acknowledgement locally for now.
+- Provide a development reset option.
+
+The intro is required for first entry into the system.
+
+## Founding Letter Content
+
+Use the Founding Letter provided in the product conversation as the source text. Preserve its tone, spacing, and meaning.
+
+Core message: Mobius exists because organizations forget. Mobius gives organizations living memory. Builders must protect trust, document before implementing, and leave the platform wiser than they inherited it.
+
+## Animated Logo Requirement
+
+Create the animated logo in code using CSS or inline SVG.
+
+Visual direction:
+
+- Dark executive background.
+- Purple and gold glow.
+- Orbital motion.
+- Infinity-inspired mark.
+- Subtle pulse.
+- Premium command-center feel.
+
+No video files. No external paid assets.
 
 ## Brand System
 
@@ -14,20 +52,6 @@ Use the Mobius identity:
 - Tone: executive, futuristic, precise, operational.
 - Visual direction: dark enterprise command center, purple/gold accents, high contrast, clean typography.
 - Avoid playful consumer app styling.
-
-## Current Foundation
-
-The repo already contains a React + Vite foundation:
-
-- `src/App.tsx`
-- `src/data.ts`
-- `src/styles.css`
-- `package.json`
-- `vite.config.ts`
-- `architecture.yaml`
-- `mobius.yaml`
-
-Build from this foundation. Do not replace Mobius terminology with generic dashboard language.
 
 ## Required UI Sections
 
@@ -94,66 +118,68 @@ Complete the UI with these production-ready sections:
    - What changed
    - What Mobius recommends next
 
-## Data Model
+9. Founder Workspace
+   - Founder: Michael Bell
+   - Role: Chief Architect
+   - Current initiative
+   - Pending approvals
+   - Repositories changed today
+   - Architecture drift
+   - Canon updates
 
-For now, use clean typed mock data in `src/data.ts`. Structure it so it can later be replaced by live APIs.
-
-Recommended files:
-
-- `src/types.ts`
-- `src/data.ts`
-- `src/components/MetricCard.tsx`
-- `src/components/Panel.tsx`
-- `src/components/DepartmentCard.tsx`
-- `src/components/RepositoryTable.tsx`
-- `src/components/Timeline.tsx`
-- `src/components/DecisionFeed.tsx`
-- `src/components/SonicPanel.tsx`
-- `src/components/PcpCenter.tsx`
-- `src/components/Recommendations.tsx`
-
-## UX Requirements
-
-- Responsive layout
-- Strong information hierarchy
-- Clear status colors
-- No horizontal overflow on laptop screens
-- Executive-readable labels
-- Each panel should answer a specific operational question
-- Empty states should be professional and useful
+10. Executive Voice Response Feature
+   - Voice mode toggle: Silent, Executive, Conversational.
+   - Silent shows text only.
+   - Executive shows concise brief text.
+   - Conversational shows Ask Mobius text prompt.
+   - Do not implement real speech synthesis yet unless simple browser speech synthesis is cleanly isolated and optional.
 
 ## Engineering Requirements
 
-- Keep React strict mode working
-- Keep TypeScript strict
-- `npm run build` must pass
-- Do not introduce backend requirements yet
-- Do not add authentication yet
-- Do not hard-code secrets
-- Keep mock data separated from components
-- Preserve all Mobius terminology
+- React.
+- TypeScript.
+- Vite.
+- Strict typing.
+- Componentized architecture.
+- Mock data isolated in src/data.ts.
+- Shared types in src/types.ts.
+- No backend dependency yet.
+- No secrets.
+- No auth yet.
+- npm run build must pass.
+
+## Recommended Components
+
+- src/components/CanonIntro.tsx
+- src/components/AnimatedMobiusLogo.tsx
+- src/components/MetricCard.tsx
+- src/components/Panel.tsx
+- src/components/Header.tsx
+- src/components/ExecutiveBrief.tsx
+- src/components/VoiceModeToggle.tsx
+- src/components/OrganizationHealth.tsx
+- src/components/LiveTimeline.tsx
+- src/components/DigitalTwin.tsx
+- src/components/DepartmentOperations.tsx
+- src/components/AiCoordinationCenter.tsx
+- src/components/ApprovalCenter.tsx
+- src/components/SonicIntelligence.tsx
+- src/components/MemorySearch.tsx
+- src/components/PredictiveIntelligence.tsx
+- src/components/ExecutiveAssistant.tsx
+- src/components/RepositoryHealth.tsx
+- src/components/DecisionTransparency.tsx
+- src/components/FounderWorkspace.tsx
 
 ## Acceptance Criteria
 
-The UI is complete when:
-
-1. `npm install` succeeds.
-2. `npm run build` succeeds.
-3. The app renders without runtime errors.
-4. All required UI sections are visible.
-5. The design reads as Mobius Command Center, not a generic analytics dashboard.
-6. The UI clearly shows Atlas, Router, Sonic, MCMS, repositories, metrics, and recommendations.
-7. The code is clean enough for future live data integration.
-
-## Do Not Do
-
-- Do not remove Mobius brand language.
-- Do not rename Sonic to generic audio service.
-- Do not rename MCMS to generic change management.
-- Do not flatten Atlas / Router / Sonic boundaries.
-- Do not add paid UI libraries.
-- Do not add backend dependencies.
-
-## Final Output Expected
-
-Open a pull request or commit completing the working UI foundation with componentized React code, typed mock data, responsive styling, and successful build.
+1. npm install succeeds.
+2. npm run build succeeds.
+3. First-entry Canon intro appears before dashboard.
+4. User must acknowledge the Founding Letter before entering.
+5. Animated logo is visible on intro screen.
+6. All Version 5 sections are visible.
+7. The design reads as Mobius Command Center, not a generic analytics dashboard.
+8. Mock data is typed and separated.
+9. No Mobius terminology is renamed.
+10. Code is clean enough for future live data integration.
