@@ -1,0 +1,21 @@
+repository: mobius-command-center
+version: 1.0.0
+status: foundation-ui
+classification: internal-platform
+primary_layer: operations-ui
+department: Operations
+mission: Show what is happening now, what needs attention, what changed, and what Mobius recommends next.
+capabilities:
+  - executive-overview
+  - department-operations
+  - repository-health
+  - mcms-status
+  - routing-decisions
+  - oies-vci-mis-metrics
+  - organizational-memory-activity
+  - predictive-recommendations
+quality_gates:
+  responsive_ui_required: true
+  repository_manifest_required: true
+  accessibility_required: true
+  live_data_integration_pending: true
