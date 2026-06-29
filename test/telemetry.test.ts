@@ -1,9 +1,8 @@
-import assert from "node:assert/strict";
-import test from "node:test";
-import { createDashboardTelemetry } from "../src/telemetry.js";
+import { expect, test } from "vitest";
+import { createDashboardTelemetry } from "../src/telemetry";
 
-test("dashboard telemetry captures Phase 2 loop state", () => {
-  const telemetry = createDashboardTelemetry({
+test("captures Phase 2 loop state", () => {
+  const result = createDashboardTelemetry({
     loopId: "ML-TEST-001",
     organizationId: "mobius-technologies",
     status: "completed",
@@ -14,7 +13,7 @@ test("dashboard telemetry captures Phase 2 loop state", () => {
     summary: "Brain completed memory-first engineering summary."
   });
 
-  assert.equal(telemetry.status, "completed");
-  assert.equal(telemetry.cards.providerCalls, 0);
-  assert.equal(telemetry.cards.memoryHits, 2);
+  expect(result.status).toBe("completed");
+  expect(result.cards.providerCalls).toBe(0);
+  expect(result.cards.memoryHits).toBe(2);
 });
