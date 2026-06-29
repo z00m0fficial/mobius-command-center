@@ -1,0 +1,183 @@
+.genesis-rc {
+  animation: rcFadeIn 700ms ease both;
+}
+
+.genesis-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.9fr);
+  gap: 24px;
+  padding: 30px;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.cinematic-panel::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: -140px;
+  top: -140px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(216, 180, 254, 0.24), transparent 68%);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 8px;
+}
+
+.command-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 14px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 180, 254, 0.28);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: 0 0 30px rgba(147, 51, 234, 0.16);
+}
+
+.founding-badge {
+  display: inline-flex;
+  margin-top: 16px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(250, 204, 21, 0.12);
+  color: #fde68a;
+  font-size: 0.84rem;
+}
+
+.dynamic-modules {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.living-card {
+  min-height: 170px;
+  animation: breathe 4.8s ease-in-out infinite;
+}
+
+.living-card svg {
+  color: #d8b4fe;
+  margin-bottom: 12px;
+}
+
+.pulse-row {
+  animation: memoryPulse 3.2s ease-in-out infinite;
+}
+
+.atlas-dna-panel {
+  position: relative;
+  min-height: 500px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.dna-aura {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35), rgba(59, 130, 246, 0.12), transparent 68%);
+  filter: blur(18px);
+  animation: auraPulse 4.5s ease-in-out infinite;
+}
+
+.dna-header,
+.dna-stage,
+.dna-stats {
+  position: relative;
+  z-index: 2;
+}
+
+.dna-stage {
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+}
+
+.dna-helix {
+  position: relative;
+  width: 190px;
+  height: 290px;
+  animation: rotateDna 8s linear infinite;
+}
+
+.dna-node {
+  position: absolute;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: #d8b4fe;
+  box-shadow: 0 0 18px #8b5cf6;
+}
+
+.dna-core-copy {
+  position: absolute;
+  text-align: center;
+}
+
+.dna-core-copy strong {
+  display: block;
+  font-size: 3.4rem;
+}
+
+.dna-core-copy span {
+  color: #cabee4;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+}
+
+.dna-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dna-stats div {
+  padding: 13px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+@keyframes rcFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes memoryPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(134, 239, 172, 0); }
+  50% { box-shadow: 0 0 26px rgba(134, 239, 172, 0.12); }
+}
+
+@keyframes auraPulse {
+  0%, 100% { opacity: 0.72; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes rotateDna {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1100px) {
+  .dynamic-modules { grid-template-columns: repeat(2, 1fr); }
+  .genesis-hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .dynamic-modules,
+  .two,
+  .three { grid-template-columns: 1fr; }
+  .genesis-hero { padding: 18px; }
+  .atlas-dna-panel { min-height: 430px; }
+}
