@@ -1,13 +1,9 @@
 import { Activity, Brain, Building2, CalendarDays, ClipboardCheck, Clapperboard, MessageSquareText, Sparkles, Users } from "lucide-react";
 import { AtlasDNA } from "./components/AtlasDNA";
+import { runAtlasConversationVerticalSlice } from "./demo/atlasConversationVerticalSlice";
 
-const liveFeed = [
-  ["Business Memory Updated", "Instructor coverage risk stored under Operations."],
-  ["Individual Memory Created", "Kiva prefers quick executive summaries and clear next actions."],
-  ["Creative Intelligence Activated", "Recital marketing workflow and tool stack prepared."],
-  ["Dashboard Built", "Modules generated from Laveen's stated needs."],
-  ["Atlas Reflection Ready", "Top 30-day priorities prepared for review."]
-];
+const demoConversation = "We're having trouble finding substitute instructors.";
+const verticalSlice = runAtlasConversationVerticalSlice(demoConversation);
 
 const modules = [
   { icon: Activity, title: "Organization Pulse", value: "98%", detail: "Healthy, learning, and ready for Genesis." },
@@ -29,11 +25,11 @@ export function App() {
             Atlas Brain listens. Organizational Memory remembers. Atlas DNA evolves as the studio teaches Mobius what matters.
           </p>
           <div className="command-bar">
-            <Sparkles size={18} /> Ask Kiva: “Tell Mobius everything slowing the studio down.”
+            <Sparkles size={18} /> Demo prompt: “{demoConversation}”
           </div>
-          <div className="founding-badge">Founding Organization #001 · Dance & Cheer Genome</div>
+          <div className="founding-badge">Founding Organization #001 · Dance & Cheer Genome · Loop {verticalSlice.loopId}</div>
         </div>
-        <AtlasDNA organization="Laveen Dance & Cheer" industryGenome="Dance & Cheer" learningVelocity={94} memoryNodes={48} activeDepartment="Operations" />
+        <AtlasDNA organization="Laveen Dance & Cheer" industryGenome="Dance & Cheer" learningVelocity={94} memoryNodes={48 + verticalSlice.memoryRecords.length} activeDepartment={verticalSlice.classification.department} />
       </section>
 
       <section className="metric-grid dynamic-modules">
@@ -54,12 +50,12 @@ export function App() {
         <article className="panel live-feed-panel">
           <div className="section-title"><Sparkles size={18} /> Live Intelligence Feed</div>
           <div className="stack">
-            {liveFeed.map(([title, detail]) => (
-              <div className="decision pulse-row" key={title}>
+            {verticalSlice.liveIntelligenceFeed.map((event, index) => (
+              <div className="decision pulse-row" key={event}>
                 <span>✓</span>
                 <div>
-                  <strong>{title}</strong>
-                  <p>{detail}</p>
+                  <strong>{event}</strong>
+                  <p>{index === 0 ? verticalSlice.input : verticalSlice.trace[Math.min(index, verticalSlice.trace.length - 1)].replaceAll("_", " ")}</p>
                 </div>
               </div>
             ))}
@@ -70,16 +66,16 @@ export function App() {
           <div className="section-title"><Building2 size={18} /> Organization Blueprint</div>
           <div className="stack blueprint-stack">
             <p><strong>Industry Genome:</strong> Dance & Cheer</p>
-            <p><strong>Departments Born:</strong> Executive, Operations, Creative, Communications, Instructor Intelligence</p>
-            <p><strong>Primary Risks:</strong> instructor coverage, parent communication, recital marketing workflow</p>
-            <p><strong>30-Day Recommendation:</strong> launch weekly instructor coverage review and parent update rhythm.</p>
+            <p><strong>Detected Department:</strong> {verticalSlice.classification.department}</p>
+            <p><strong>Primary Risk:</strong> {verticalSlice.classification.category}</p>
+            <p><strong>Recommendation:</strong> {verticalSlice.recommendation}</p>
           </div>
         </article>
       </section>
 
       <section className="grid three reflection-grid">
-        <article className="panel signal"><ClipboardCheck /><strong>Atlas Reflection</strong><p>Today the organization taught Mobius five operational truths and three recommended improvements.</p></article>
-        <article className="panel signal"><Brain /><strong>Atlas Daily Intelligence</strong><p>Tomorrow morning, Kiva receives the top three studio priorities before the day starts.</p></article>
+        <article className="panel signal"><ClipboardCheck /><strong>Atlas Reflection</strong><p>{verticalSlice.executiveSummary}</p></article>
+        <article className="panel signal"><Brain /><strong>Founder Mode Telemetry</strong><p>{verticalSlice.telemetry.memoryWrites} memory writes · {verticalSlice.telemetry.dashboardEvents} dashboard events · {verticalSlice.telemetry.dnaEvents} DNA events.</p></article>
         <article className="panel signal"><Clapperboard /><strong>Creative Intelligence</strong><p>Recital campaign intake, tool recommendations, QC workflow, and brand memory are ready.</p></article>
       </section>
     </main>
