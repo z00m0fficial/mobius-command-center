@@ -1,0 +1,52 @@
+{
+  "demoId": "laveen-dance-first-self-improvement",
+  "organization": "Laveen Dance",
+  "industry": "Dance Education / Studio Operations",
+  "objective": "Demonstrate how Mobius can help a dance studio preserve operational knowledge, coordinate staffing, monitor instructor reliability, and surface actionable improvements.",
+  "founderPrompt": "Summarize Laveen Dance operations this week, identify staffing risks, and recommend the next best action.",
+  "runtime": {
+    "expected": "Create loop ID and execution trace."
+  },
+  "brain": {
+    "expected": "Plan the request, check memory first, apply policies, and decide whether provider assistance is required."
+  },
+  "memory": {
+    "seedRecords": [
+      {
+        "title": "Instructor Reliability Framework",
+        "summary": "Instructors begin with a score of 100. No-shows, late cancellations, and negative studio feedback reduce the score. Recovery is possible through reliability, positive feedback, and consistent attendance.",
+        "tags": ["instructors", "MIS", "reliability", "recovery"]
+      },
+      {
+        "title": "Studio Operations Priorities",
+        "summary": "Studios need reliable instructor coverage, parent communication, substitute coordination, class scheduling, and visibility into operational risks.",
+        "tags": ["studio", "operations", "scheduling", "risk"]
+      },
+      {
+        "title": "Laveen Demo Focus",
+        "summary": "The demo should show how Mobius helps Laveen Dance reduce missed classes, improve staffing visibility, and create an executive dashboard for studio decisions.",
+        "tags": ["laveen", "demo", "dashboard", "staffing"]
+      }
+    ]
+  },
+  "dashboardTelemetry": {
+    "cards": [
+      "Active Instructors",
+      "Class Coverage Risk",
+      "Instructor Reliability Score",
+      "Substitute Needs",
+      "Parent Feedback",
+      "Studio Follow-Ups",
+      "Recommended Actions",
+      "Organizational Memory Writes"
+    ]
+  },
+  "successCriteria": [
+    "Runtime generates loop ID",
+    "Brain uses memory-first reasoning",
+    "Memory returns Laveen-relevant records",
+    "Dashboard telemetry is generated",
+    "Atlas Engineering Intelligence verifies demo readiness",
+    "Founder receives a clear operational recommendation"
+  ]
+}
